@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hahadiou <hahadiou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 15:41:24 by hahadiou          #+#    #+#             */
-/*   Updated: 2022/09/29 15:41:25 by hahadiou         ###   ########.fr       */
+/*   Created: 2022/10/05 16:39:14 by hahadiou          #+#    #+#             */
+/*   Updated: 2022/10/11 16:00:26 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
+	t_list	*node;
+	t_list	*holder;
 
-	i = 0;
-	while (src[i])
+	if (!lst || !del)
+		return ;
+	node = *lst;
+	while (node)
 	{
-		dest[i] = src[i];
-		i++;
+		del(node->content);
+		holder = node->next;
+		free(node);
+		node = holder;
 	}
-	dest[i] = '\0';
-	return (dest);
+	*lst = NULL;
 }

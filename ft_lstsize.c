@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hahadiou <hahadiou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 15:41:24 by hahadiou          #+#    #+#             */
-/*   Updated: 2022/09/29 15:41:25 by hahadiou         ###   ########.fr       */
+/*   Created: 2022/10/05 12:40:23 by hahadiou          #+#    #+#             */
+/*   Updated: 2022/10/05 13:59:58 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (src[i])
+	while (lst != NULL)
 	{
-		dest[i] = src[i];
+		lst = lst->next;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }
